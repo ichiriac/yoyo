@@ -33,8 +33,7 @@ export default class Connection {
             model.setConnection(this);            
         }
         this.models[model.name] = model;
-    }
-    
+    }   
     async transaction(callback: (transaction:any) => Promise<void>) {
         const tr = new Transaction(this);
         try {

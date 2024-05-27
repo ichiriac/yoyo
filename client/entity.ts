@@ -1,14 +1,21 @@
 import ModelTransaction from "./model";
 
 export default class Entity {
+    protected static _model: ModelTransaction<Entity>;
     protected values: { [property:string]: any };
     protected changes: { [property:string]: any };
-    public readonly model:ModelTransaction<Entity>;
-    constructor(model: ModelTransaction<Entity>, values: any) {
-        this.model = model;
+    constructor(values: any = {}) {
         this.changes = {};
         this.values = values;
     }
+
+    /**
+     * Gets the model instance
+     */
+    get model(): ModelTransaction<Entity> {
+        return Entity._model;
+    }
+
     /**
      * Gets the entity identifier
      */

@@ -39,7 +39,7 @@ export default class Model<T extends Entity> {
         Object.setPrototypeOf(Object.getPrototypeOf(this), Object.getPrototypeOf(parent));
     }
     transaction(trx:Transaction):ModelTransaction<T> {
-        const result = new ModelTransaction<T>(this.name, this.columns, this.type, trx);
+        const result = new ModelTransaction<T>(this.name, this.columns, trx);
         result.setConnection(this.cnx);
         result.setType(this.type);
         return result;
